@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'recipe',
     'users',
-    'users.apps.UsersConfig'
     
 ]
 
