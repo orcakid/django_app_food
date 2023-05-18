@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'recipe'
+    'recipe',
+    'users',
+    'users.apps.UsersConfig'
     
 ]
 
@@ -120,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'recipe.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 # Internationalization
