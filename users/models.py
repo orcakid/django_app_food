@@ -14,6 +14,24 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+        ordering = ('id',)
     
     def __str__(self):
         return self.username
+    
+    
+class Subscription(models.Model):
+    subscriber = models.ForeignKey(User, related_name='subscriber_subscription', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='author_subscription', on_delete=models.CASCADE)
+    
+    
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+        constraints = (models.UniqueConstraint(fields=('subscriber', 'author'), name='resub'),
+                    models.CheckConstraint(check=~models.Q(author=models.F("subscriber")), name="selfsubscription",))
+        
+    
+    def __str__(self) -> str:
+        return self.author.username
+        

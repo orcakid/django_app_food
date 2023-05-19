@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'recipe',
     'users',
     'djoser',
-    'api'
+    'api',
+    'core'
     
 
 ]
@@ -107,7 +108,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': "core.pagination.CustomPageNumberPagination",
     'PAGE_SIZE': 10
 }
 
@@ -115,6 +116,9 @@ REST_FRAMEWORK = {
 DJOSER = {
     "PERMISSIONS": {
         "user_list": ("rest_framework.permissions.AllowAny",),
+        "user": ("rest_framework.permissions.AllowAny",),
+        "user_delete": ["rest_framework.permissions.IsAdminUser"],
+        "set_username": ["rest_framework.permissions.IsAdminUser"],
     },
     "HIDE_USERS": False
 }
