@@ -120,7 +120,11 @@ DJOSER = {
         "user_delete": ["rest_framework.permissions.IsAdminUser"],
         "set_username": ["rest_framework.permissions.IsAdminUser"],
     },
-    "HIDE_USERS": False
+    "SERIALIZERS": {
+        "current_user": "api.serializers.UserSerializer",
+        "user": "api.serializers.UserSerializer",
+    },
+    "HIDE_USERS": False,
 }
 
 # Password validation
