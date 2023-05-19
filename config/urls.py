@@ -19,12 +19,15 @@ from django.urls import path, include
 from rest_framework import routers
 from recipe.views import RicepeViewSet
 
-router = routers.SimpleRouter()
-router.register('recipe', RicepeViewSet, basename='recipe')
+# router = routers.SimpleRouter()
+# router.register('recipe', RicepeViewSet, basename='recipe')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', include(router.urls)),
+    #path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('api.urls')),
+    # path('', include(router.urls)),
+    # path('api/v1/auth/', include('djoser.urls')),         
+    # path(r'auth/', include('djoser.urls.authtoken')),  
 ]
